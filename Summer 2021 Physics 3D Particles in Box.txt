@@ -1,0 +1,126 @@
+
+
+from mpl_toolkits import mplot3d
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+from numpy.random import random as ran
+
+
+
+userL=input('enter the length of the box:')
+
+print(' ')
+print('the length will be', userL,'.')   
+#=int(L)
+#random=ran()
+userW=input('enter the width of the box:')
+print('the width of the box will be', userW, '.')
+
+userH=input('enter the height of the box:')
+print('the height of box will be', userH, '.')
+
+userit=input('enter the number of iterations:')
+print('the number of iterations will be', userit, '.')
+
+userpart=input('enter the number of particles:')
+print('the number of particles will be', userpart, '.')
+#print (random)
+userlam=input('enter lambda:')
+#x=1/6
+
+#print(x)
+
+
+
+L=int(userL)
+#print(L)
+W=int(userW)
+H=int(userH)
+iteration=int(userit)
+partnum=int(userpart)
+lam=float(userlam)
+
+
+x=np.zeros(iteration)
+y=np.zeros(iteration)
+z=np.zeros(iteration)
+
+i=0
+x[i]=int(0)
+y[i]=int(0)
+z[i]=int(0)
+
+
+for i in range (1, iteration):
+     
+    randnum=ran()
+    #rand2=ran()
+   
+    #print(rand2)
+     
+    if randnum <1/6:
+        x[i]=x[i-1]-1
+        y[i]=y[i-1]
+        z[i]=z[i-1]
+    
+    elif randnum <2/6:
+        x[i]=x[i-1]+1
+        y[i]=y[i-1]
+        z[i]=z[i-1]
+        
+    elif randnum <3/6:
+        x[i]=x[i-1]
+        y[i]=y[i-1]+1
+        z[i]=z[i-1]
+        
+    elif randnum <4/6:
+        x[i]=x[i-1]
+        y[i]=y[i-1]-1
+        z[i]=z[i-1]
+        
+    elif  randnum <5/6:
+        x[i]=x[i-1]
+        y[i]=y[i-1]
+        z[i]=z[i-1]-1
+        
+    else:
+        x[i]=x[i-1]
+        y[i]=y[i-1]
+        z[i]=z[i-1]+1
+        
+    if y[i] == L+1:
+        y[i]=1
+    
+    if y[i] <1:
+        y[i]=L
+        
+    if x[i]==W:
+        x[i]=W-1
+    
+    if x[i] <1:
+        x[i]=1
+    
+    if z[i]== H+1:
+        z[i]=1
+    
+    if z[i]<1:
+        z[i]=H
+        
+   
+        
+   # print(randnum, x[i], y[i])
+    
+ax = plt.axes(projection='3d')
+
+ax.scatter3D(x,y,z);
+#plt.xlim(1,L)
+#plt.ylim(1,W)
+#plt.zlim(1,H)
+
+#plt.xlim(0,75)
+#plt.ylim(0,75)
+
+#30print(userL, L)
